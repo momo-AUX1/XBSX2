@@ -1028,7 +1028,8 @@ bool Pcsx2Config::GSOptions::UseHardwareRenderer() const
 
 static constexpr const std::array s_spu2_sync_mode_names = {
 	"Disabled",
-	"TimeStretch"};
+	"TimeStretch",
+};
 static constexpr const std::array s_spu2_sync_mode_display_names = {
 	TRANSLATE_NOOP("Pcsx2Config", "Disabled (Noisy)"),
 	TRANSLATE_NOOP("Pcsx2Config", "TimeStretch (Recommended)"),
@@ -1427,7 +1428,6 @@ void Pcsx2Config::GamefixOptions::LoadSave(SettingsWrapper& wrap)
 	SettingsWrapBitBool(FullVU0SyncHack);
 }
 
-
 Pcsx2Config::DebugOptions::DebugOptions()
 {
 	ShowDebuggerOnStart = false;
@@ -1459,7 +1459,92 @@ bool Pcsx2Config::DebugOptions::operator!=(const DebugOptions& right) const
 
 bool Pcsx2Config::DebugOptions::operator==(const DebugOptions& right) const
 {
-	return OpEqu(bitset) && OpEqu(FontWidth) && OpEqu(FontHeight) && OpEqu(WindowWidth) && OpEqu(WindowHeight) && OpEqu(MemoryViewBytesPerRow);
+	return OpEqu(bitset) &&
+		   OpEqu(FontWidth) &&
+		   OpEqu(FontHeight) &&
+		   OpEqu(WindowWidth) &&
+		   OpEqu(WindowHeight) &&
+		   OpEqu(MemoryViewBytesPerRow);
+}
+
+const char* Pcsx2Config::DebugAnalysisOptions::RunConditionNames[] = {
+	"Always",
+	"If Debugger Is Open",
+	"Never",
+	nullptr,
+};
+
+const char* Pcsx2Config::DebugAnalysisOptions::FunctionScanModeNames[] = {
+	"Scan From ELF",
+	"Scan From Memory",
+	"Skip",
+	nullptr,
+};
+
+void Pcsx2Config::DebugAnalysisOptions::LoadSave(SettingsWrapper& wrap)
+{
+	{
+		SettingsWrapSection("Debugger/Analysis");
+
+		SettingsWrapEnumEx(RunCondition, "RunCondition", RunConditionNames);
+		SettingsWrapBitBool(GenerateSymbolsForIRXExports);
+
+		SettingsWrapBitBool(AutomaticallySelectSymbolsToClear);
+
+		SettingsWrapBitBool(ImportSymbolsFromELF);
+		SettingsWrapBitBool(DemangleSymbols);
+		SettingsWrapBitBool(DemangleParameters);
+
+		SettingsWrapEnumEx(FunctionScanMode, "FunctionScanMode", FunctionScanModeNames);
+		SettingsWrapBitBool(CustomFunctionScanRange);
+		SettingsWrapEntry(FunctionScanStartAddress);
+		SettingsWrapEntry(FunctionScanEndAddress);
+
+		SettingsWrapBitBool(GenerateFunctionHashes);
+	}
+
+	int symbolSourceCount = static_cast<int>(SymbolSources.size());
+	{
+		SettingsWrapSection("Debugger/Analysis/SymbolSources");
+		SettingsWrapEntryEx(symbolSourceCount, "Count");
+	}
+
+	for (int i = 0; i < symbolSourceCount; i++)
+	{
+		std::string section = "Debugger/Analysis/SymbolSources/" + std::to_string(i);
+		SettingsWrapSection(section.c_str());
+
+		DebugSymbolSource Source;
+		if (wrap.IsSaving())
+			Source = SymbolSources[i];
+
+		SettingsWrapEntryEx(Source.Name, "Name");
+		SettingsWrapBitBoolEx(Source.ClearDuringAnalysis, "ClearDuringAnalysis");
+
+		if (wrap.IsLoading())
+			SymbolSources.emplace_back(std::move(Source));
+	}
+
+	int extraSymbolFileCount = static_cast<int>(ExtraSymbolFiles.size());
+	{
+		SettingsWrapSection("Debugger/Analysis/ExtraSymbolFiles");
+		SettingsWrapEntryEx(extraSymbolFileCount, "Count");
+	}
+
+	for (int i = 0; i < extraSymbolFileCount; i++)
+	{
+		std::string section = "Debugger/Analysis/ExtraSymbolFiles/" + std::to_string(i);
+		SettingsWrapSection(section.c_str());
+
+		DebugExtraSymbolFile file;
+		if (wrap.IsSaving())
+			file = ExtraSymbolFiles[i];
+
+		SettingsWrapEntryEx(file.Path, "Path");
+
+		if (wrap.IsLoading())
+			ExtraSymbolFiles.emplace_back(std::move(file));
+	}
 }
 
 Pcsx2Config::SavestateOptions::SavestateOptions()
@@ -1780,6 +1865,7 @@ void Pcsx2Config::LoadSaveCore(SettingsWrapper& wrap)
 	Savestate.LoadSave(wrap);
 
 	Debugger.LoadSave(wrap);
+	DebuggerAnalysis.LoadSave(wrap);
 	Trace.LoadSave(wrap);
 
 	Achievements.LoadSave(wrap);
