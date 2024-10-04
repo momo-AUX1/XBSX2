@@ -13,9 +13,7 @@ Please note that a BIOS dump from a legitimately-owned PS2 console is required t
 
 ## Building
 
-* Visual Studio 2022 with the UWP tools installed
-* [PCSX2 Patches](https://github.com/PCSX2/pcsx2_patches/releases/tag/latest/)
-* [PCSX2 Dependencies](https://github.com/PCSX2/pcsx2-windows-dependencies/releases/tag/latest-windows-dependencies)
+You can find the compilation instructions on the wiki: https://wiki.xboxdev.store/en/XBSX2BuildingGuide.
 
 ## Credits
 
