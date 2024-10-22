@@ -77,6 +77,12 @@ bool GSIsHardwareRenderer()
 	return (GSCurrentRenderer != GSRendererType::SW);
 }
 
+std::string GetDefaultAdapter()
+{
+	// Will be treated as empty.
+	return "(Default)";
+}
+
 static RenderAPI GetAPIForRenderer(GSRendererType renderer)
 {
 	switch (renderer)
