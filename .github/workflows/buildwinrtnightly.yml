@@ -61,14 +61,14 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: appx-${{ matrix.configuration }}
-        path: "AppPackages\\xbsx2\\xbsx2_${{ steps.extract_version.outputs.version }}_x64_Test\\xbsx2_${{ steps.extract_version.outputs.version }}_x64.appx"
+        path: AppPackages
         
     - name: Upload APPX file (AVX2)
       if: matrix.configuration == 'Release AVX2'
       uses: actions/upload-artifact@v4
       with:
         name: appx-${{ matrix.configuration }}
-        path: "AppPackages\\xbsx2\\xbsx2_${{ steps.extract_version.outputs.version }}_x64_Release AVX2_Test\\xbsx2_${{ steps.extract_version.outputs.version }}_x64_Release AVX2.appx"
+        path: AppPackages
   
   Publish-release:
     needs: build
@@ -91,5 +91,5 @@ jobs:
           prerelease: false
           title: Latest XBSX2 Builds
           files: | 
-            ./artifacts/appx-Release/AppPackages/xbsx2/xbsx2_${{ steps.extract_version.outputs.version }}_x64_Test/xbsx2_${{ steps.extract_version.outputs.version }}_x64.appx
-            ./artifacts/appx-Release\ AVX2/AppPackages/xbsx2/xbsx2_${{ steps.extract_version.outputs.version }}_x64_Release\ AVX2_Test/xbsx2_${{ steps.extract_version.outputs.version }}_x64_Release\ AVX2.appx
+            ./artifacts/appx-Release/AppPackages/xbsx2/xbsx2_*_x64_Test/xbsx2_*_x64.msix
+            ./artifacts/appx-Release\ AVX2/AppPackages/xbsx2/xbsx2_*_x64_Release\ AVX2_Test/xbsx2_*_x64_Release\ AVX2.msix
