@@ -3,6 +3,7 @@
 
 #define IMGUI_DEFINE_MATH_OPERATORS
 
+#include "BuildVersion.h"
 #include "CDVD/CDVDcommon.h"
 #include "GS/Renderers/Common/GSDevice.h"
 #include "GS/Renderers/Common/GSTexture.h"
@@ -23,7 +24,6 @@
 #include "USB/USB.h"
 #include "VMManager.h"
 #include "ps2/BiosTools.h"
-#include "svnrev.h"
 
 #include "common/Console.h"
 #include "common/Error.h"
@@ -6780,13 +6780,7 @@ void FullscreenUI::DrawAboutWindow()
 	{
 		ImGui::NewLine();
 
-		ImGui::TextWrapped("Version: %s (Git: %s)", APP_VERSION, GIT_REV);
-
-		ImGui::TextWrapped(
-			"XBSX2 is a free and open-source PlayStation 2 (PS2) emulator. Its purpose is to emulate the PS2's hardware using a "
-			"combination of MIPS CPU Interpreters, Recompilers, and a Virtual Machine that manages hardware states and PS2 system memory. "
-			"This allows you to play PS2 games on your Xbox via! Dev Mode, offering many additional features and benefits.");
-
+		ImGui::TextWrapped(FSUI_CSTR("Version: %s"), BuildVersion::GitRev);
 		ImGui::NewLine();
 
 		ImGui::TextWrapped("%s",
