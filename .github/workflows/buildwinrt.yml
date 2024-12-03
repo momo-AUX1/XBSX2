@@ -70,26 +70,26 @@ jobs:
         name: appx-${{ matrix.configuration }}
         path: "AppPackages\\xbsx2\\xbsx2_${{ steps.extract_version.outputs.version }}_x64_Release AVX2_Test\\xbsx2_${{ steps.extract_version.outputs.version }}_x64_Release AVX2.appx"
   
-  Publish-release:
-    needs: build
-    name: Publish Release
-    if: github.ref == 'refs/heads/uwp'
-    permissions: write-all
-    runs-on: ubuntu-22.04
+ # Publish-release:
+ #   needs: build
+ #   name: Publish Release
+ #   if: github.ref == 'refs/heads/uwp'
+ #   permissions: write-all
+ #   runs-on: ubuntu-22.04
 
-    steps:
-      - name: Download Artifacts
-        uses: actions/download-artifact@v4.1.7
-        with:
-          path: ./artifacts/
+ #   steps:
+ #     - name: Download Artifacts
+ #       uses: actions/download-artifact@v4.1.7
+ #       with:
+ #         path: ./artifacts/
           
-      - name: Create a new release
-        uses: marvinpinto/action-automatic-releases@latest
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          automatic_release_tag: latest
-          prerelease: false
-          title: Latest XBSX2 Builds
-          files: | 
-            ./artifacts/appx-Release/AppPackages/xbsx2/xbsx2_${{ steps.extract_version.outputs.version }}_x64_Test/xbsx2_${{ steps.extract_version.outputs.version }}_x64.appx
-            ./artifacts/appx-Release\ AVX2/AppPackages/xbsx2/xbsx2_${{ steps.extract_version.outputs.version }}_x64_Release\ AVX2_Test/xbsx2_${{ steps.extract_version.outputs.version }}_x64_Release\ AVX2.appx
+ #     - name: Create a new release
+ #       uses: marvinpinto/action-automatic-releases@latest
+ #       with:
+ #         repo_token: ${{ secrets.GITHUB_TOKEN }}
+ #         automatic_release_tag: latest
+ #         prerelease: false
+ #         title: Latest XBSX2 Builds
+ #         files: | 
+ #           ./artifacts/appx-Release/AppPackages/xbsx2/xbsx2_${{ steps.extract_version.outputs.version }}_x64_Test/xbsx2_${{ steps.extract_version.outputs.version }}_x64.appx
+ #           ./artifacts/appx-Release\ AVX2/AppPackages/xbsx2/xbsx2_${{ steps.extract_version.outputs.version }}_x64_Release\ AVX2_Test/xbsx2_${{ steps.extract_version.outputs.version }}_x64_Release\ AVX2.appx
