@@ -22,7 +22,7 @@ You can find the compilation instructions on the wiki: https://wiki.xboxdev.stor
 
 ## Credits
 
-* PCSX2 For making the best PS2 emulator.
-* SirMangler for porting PCSX2 to UWP.
-* worleydl for the achievement code.
-* Rockso for the Assets.
+* [PCSX2](https://github.com/PCSX2/) For making the best PS2 emulator.
+* [SirMangler](https://github.com/SirMangler/) for porting PCSX2 to UWP.
+* [worleydl](https://github.com/worleydl) for the achievement code.
+* [Rockso](https://github.com/Rockso85) for the Assets.
