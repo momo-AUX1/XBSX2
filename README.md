@@ -18,7 +18,7 @@ Please note that a BIOS dump from a legitimately-owned PS2 console is required t
 
 ## Building
 
-You can find the compilation instructions on the wiki: https://wiki.xboxdev.store/en/XBSX2BuildingGuide.
+You can find the compilation instructions here: [BUILDING.md](https://github.com/EmulationCollective/XBSX2/blob/uwp/BUILDING.md)
 
 ## Credits
 
