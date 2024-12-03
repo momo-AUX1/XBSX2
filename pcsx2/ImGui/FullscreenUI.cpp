@@ -6768,6 +6768,8 @@ void FullscreenUI::DrawAboutWindow()
 
 		ImGui::TextWrapped("Thank you to the PCSX2 team for their hard work on the PCSX2 project.");
 
+		ImGui::TextWrapped("Thank you to SirMangler for porting PCSX2 to UWP.");
+
 		ImGui::TextWrapped("Thank you to worleydl for the Achievement Login code.");
 
 		ImGui::TextWrapped("Thank you to Rockso for remaking the old PCSX2 assets.");
@@ -6777,7 +6779,7 @@ void FullscreenUI::DrawAboutWindow()
 		BeginMenuButtons();
 
 		if (ActiveButton(ICON_FA_PERSON_BOOTH "Discord", false))
-			ExitFullscreenAndOpenURL(XBOXEMULATIONHUB_DISCORD_URL);
+			ExitFullscreenAndOpenURL(EMULATIONCOLLECTIVE_DISCORD_URL);
 
 		if (ActiveButton(ICON_FA_BUG " XBSX2 GitHub Repository", false))
 			ExitFullscreenAndOpenURL(XBSX2_GITHUB_URL);

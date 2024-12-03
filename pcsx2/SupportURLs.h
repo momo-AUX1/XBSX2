@@ -9,4 +9,4 @@
 #define XBSX2_GITHUB_URL "https://github.com/SirMangler/pcsx2"
 #define PCSX2_LICENSE_URL "https://github.com/PCSX2/pcsx2/blob/master/pcsx2/Docs/License.txt"
 #define PCSX2_DISCORD_URL "https://discord.com/invite/TCz3t9k"
-#define XBOXEMULATIONHUB_DISCORD_URL "https://discord.gg/xbox-emulation-hub-1007582798598647889"
+#define EMULATIONCOLLECTIVE_DISCORD_URL "https://discord.gg/emulation-collective-1007582798598647889"
