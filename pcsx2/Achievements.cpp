@@ -2010,7 +2010,7 @@ void Achievements::DrawGameOverlays()
 			s_active_progress_indicator.reset();
 		}
 
-		position.y -= image_size.y - padding * 3.0f;
+		position.y -= image_size.y + padding * 3.0f;
 	}
 
 	if (!s_active_leaderboard_trackers.empty())
@@ -2060,7 +2060,7 @@ void Achievements::DrawGameOverlays()
 		}
 
 		// Uncomment if there are any other overlays above this one.
-		//position.y -= image_size.y - padding * 3.0f;
+		//position.y -= image_size.y + padding * 3.0f;
 	}
 }
 
