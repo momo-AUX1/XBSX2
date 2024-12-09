@@ -3559,7 +3559,9 @@ void FullscreenUI::DrawGraphicsSettingsPage(SettingsInterface* bsi, bool show_ad
 		FSUI_NSTR("Metal"),
 #endif
 		FSUI_NSTR("Software"),
+#ifndef WINRT_XBOX
 		FSUI_NSTR("Null"),
+#endif
 	};
 	static constexpr const char* s_renderer_values[] = {
 		"-1", //GSRendererType::Auto,
