@@ -189,6 +189,7 @@ extern const u32 SPIN_TIME_NS;
 [[noreturn]] void AbortWithMessage(const char* msg);
 
 extern std::string GetOSVersionString();
+extern std::string GetConsoleModelString();
 
 namespace Common
 {
