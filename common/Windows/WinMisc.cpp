@@ -95,34 +95,34 @@ std::string GetConsoleModelString()
 		switch (deviceInfo.deviceId)
 		{
 			case GAMING_DEVICE_DEVICE_ID_XBOX_ONE:
-				model = " Xbox One";
+				model = "Xbox One";
 				break;
 			case GAMING_DEVICE_DEVICE_ID_XBOX_ONE_S:
-				model = " Xbox One S";
+				model = "Xbox One S";
 				break;
 			case GAMING_DEVICE_DEVICE_ID_XBOX_ONE_X:
-				model = " Xbox One X";
+				model = "Xbox One X";
 				break;
 			case GAMING_DEVICE_DEVICE_ID_XBOX_ONE_X_DEVKIT:
-				model = " Xbox One X Developer Kit";
+				model = "Xbox One X Developer Kit";
 				break;
 			case GAMING_DEVICE_DEVICE_ID_XBOX_SERIES_S:
-				model = " Xbox Series S";
+				model = "Xbox Series S";
 				break;
 			case GAMING_DEVICE_DEVICE_ID_XBOX_SERIES_X:
-				model = " Xbox Series X";
+				model = "Xbox Series X";
 				break;
 			case GAMING_DEVICE_DEVICE_ID_XBOX_SERIES_X_DEVKIT:
-				model = " Xbox Series X Developer Kit";
+				model = "Xbox Series X Developer Kit";
 				break;
 			default:
-				model = " Unknown Xbox model";
+				model = "Unknown Xbox model";
 				break;
 		}
 	}
 	else
 	{
-		model = " Error detecting Xbox model";
+		model = "Error detecting Xbox model";
 	}
 
 	return model;
