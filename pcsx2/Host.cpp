@@ -159,7 +159,7 @@ bool Host::ConfirmFormattedMessage(const std::string_view title, const char* for
 
 std::string Host::GetHTTPUserAgent()
 {
-	return fmt::format("PCSX2 {} ({})", BuildVersion::GitRev, GetOSVersionString());
+	return fmt::format("XBSX2 {} ({})", BuildVersion::GitRev, GetOSVersionString(), GetConsoleModelString());
 }
 
 std::unique_lock<std::mutex> Host::GetSettingsLock()
