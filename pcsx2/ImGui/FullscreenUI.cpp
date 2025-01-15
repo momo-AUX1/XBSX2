@@ -3951,7 +3951,7 @@ void FullscreenUI::DrawGraphicsSettingsPage(SettingsInterface* bsi, bool show_ad
 			FSUI_CSTR("Loads replacement textures on a worker thread, reducing microstutter when replacements are enabled."), "EmuCore/GS",
 			"LoadTextureReplacementsAsync", true, replacement_active);
 		DrawToggleSetting(bsi, FSUI_CSTR("Precache Replacements"),
-			FSUI_CSTR("Preloads all replacement textures to memory. Not necessary with asynchronous loading."), "EmuCore/GS",
+			FSUI_CSTR("Preloads all replacement textures to memory. Not necessary with asynchronous loading. Use this cautiously, as UWP has a ram limit of 5.2 GB and exceeding this limit will cause the app to crash."), "EmuCore/GS",
 			"PrecacheTextureReplacements", false, replacement_active);
 
 		if (!IsEditingGameSettings(bsi))
@@ -7392,7 +7392,7 @@ TRANSLATE_NOOP("FullscreenUI", "Loads replacement textures where available and u
 TRANSLATE_NOOP("FullscreenUI", "Asynchronous Texture Loading");
 TRANSLATE_NOOP("FullscreenUI", "Loads replacement textures on a worker thread, reducing microstutter when replacements are enabled.");
 TRANSLATE_NOOP("FullscreenUI", "Precache Replacements");
-TRANSLATE_NOOP("FullscreenUI", "Preloads all replacement textures to memory. Not necessary with asynchronous loading.");
+TRANSLATE_NOOP("FullscreenUI", "Preloads all replacement textures to memory. Not necessary with asynchronous loading. Use this cautiously, as UWP has a ram limit of 5.2 GB and exceeding this limit will cause the app to crash.");
 TRANSLATE_NOOP("FullscreenUI", "Replacements Directory");
 TRANSLATE_NOOP("FullscreenUI", "Folders");
 TRANSLATE_NOOP("FullscreenUI", "Texture Dumping");
