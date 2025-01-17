@@ -1901,6 +1901,7 @@ Pcsx2Config::Pcsx2Config()
 	InhibitScreensaver = true;
 	BackupSavestate = true;
 	WarnAboutUnsafeSettings = true;
+	ManuallySetRealTimeClock = false;
 
 	// To be moved to FileMemoryCard pluign (someday)
 	for (uint slot = 0; slot < 8; ++slot)
@@ -1913,6 +1914,12 @@ Pcsx2Config::Pcsx2Config()
 
 	GzipIsoIndexTemplate = "$(f).pindex.tmp";
 	PINESlot = 28011;
+	RtcYear = 0;
+	RtcMonth = 1;
+	RtcDay = 1;
+	RtcHour = 0;
+	RtcMinute = 0;
+	RtcSecond = 0;
 }
 
 void Pcsx2Config::LoadSaveCore(SettingsWrapper& wrap)
@@ -1943,6 +1950,8 @@ void Pcsx2Config::LoadSaveCore(SettingsWrapper& wrap)
 
 	SettingsWrapBitBool(WarnAboutUnsafeSettings);
 
+	SettingsWrapBitBool(ManuallySetRealTimeClock);
+
 	// Process various sub-components:
 
 	Speedhacks.LoadSave(wrap);
@@ -1962,6 +1971,12 @@ void Pcsx2Config::LoadSaveCore(SettingsWrapper& wrap)
 
 	SettingsWrapEntry(GzipIsoIndexTemplate);
 	SettingsWrapEntry(PINESlot);
+	SettingsWrapEntry(RtcYear);
+	SettingsWrapEntry(RtcMonth);
+	SettingsWrapEntry(RtcDay);
+	SettingsWrapEntry(RtcHour);
+	SettingsWrapEntry(RtcMinute);
+	SettingsWrapEntry(RtcSecond);
 
 	// For now, this in the derived config for backwards ini compatibility.
 	SettingsWrapEntryEx(CurrentBlockdump, "BlockDumpSaveDirectory");
