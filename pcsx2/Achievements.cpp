@@ -1957,7 +1957,8 @@ void Achievements::DrawGameOverlays()
 			GSTexture* badge = ImGuiFullscreen::GetCachedTextureAsync(indicator.badge_path.c_str());
 			if (badge)
 			{
-				dl->AddImage(badge->GetNativeHandle(), current_position, current_position + image_size, ImVec2(0.0f, 0.0f), ImVec2(1.0f, 1.0f), col);
+				dl->AddImage(reinterpret_cast<ImTextureID>(badge->GetNativeHandle()),
+					current_position, current_position + image_size, ImVec2(0.0f, 0.0f), ImVec2(1.0f, 1.0f), col);
 				current_position.x -= x_advance;
 			}
 
@@ -1997,7 +1998,8 @@ void Achievements::DrawGameOverlays()
 		if (badge)
 		{
 			const ImVec2 badge_pos = box_min + ImVec2(padding, padding);
-			dl->AddImage(badge->GetNativeHandle(), badge_pos, badge_pos + image_size, ImVec2(0.0f, 0.0f), ImVec2(1.0f, 1.0f), col);
+			dl->AddImage(reinterpret_cast<ImTextureID>(badge->GetNativeHandle()),
+				badge_pos, badge_pos + image_size, ImVec2(0.0f, 0.0f), ImVec2(1.0f, 1.0f), col);
 		}
 
 		const ImVec2 text_pos = box_min + ImVec2(padding + image_size.x + spacing, (box_max.y - box_min.y - text_size.y) * 0.5f);
@@ -2114,7 +2116,7 @@ void Achievements::DrawPauseMenuOverlays()
 			if (!badge)
 				continue;
 
-			dl->AddImage(badge->GetNativeHandle(), position, position + image_size);
+			dl->AddImage(reinterpret_cast<ImTextureID>(badge->GetNativeHandle()), position, position + image_size);
 
 			const char* achievement_title = indicator.achievement->title;
 			const char* achievement_title_end = achievement_title + std::strlen(indicator.achievement->title);
@@ -2204,8 +2206,8 @@ void Achievements::DrawAchievementsWindow()
 				GSTexture* badge = ImGuiFullscreen::GetCachedTextureAsync(s_game_icon.c_str());
 				if (badge)
 				{
-					ImGui::GetWindowDrawList()->AddImage(
-						badge->GetNativeHandle(), icon_min, icon_max, ImVec2(0.0f, 0.0f), ImVec2(1.0f, 1.0f), IM_COL32(255, 255, 255, 255));
+					ImGui::GetWindowDrawList()->AddImage(reinterpret_cast<ImTextureID>(badge->GetNativeHandle()),
+						icon_min, icon_max, ImVec2(0.0f, 0.0f), ImVec2(1.0f, 1.0f), IM_COL32(255, 255, 255, 255));
 				}
 			}
 
@@ -2393,8 +2395,8 @@ void Achievements::DrawAchievement(const rc_client_achievement_t* cheevo)
 		GSTexture* badge = ImGuiFullscreen::GetCachedTextureAsync(badge_path->c_str());
 		if (badge)
 		{
-			ImGui::GetWindowDrawList()->AddImage(
-				badge->GetNativeHandle(), bb.Min, bb.Min + image_size, ImVec2(0.0f, 0.0f), ImVec2(1.0f, 1.0f), IM_COL32(255, 255, 255, 255));
+			ImGui::GetWindowDrawList()->AddImage(reinterpret_cast<ImTextureID>(badge->GetNativeHandle()),
+				bb.Min, bb.Min + image_size, ImVec2(0.0f, 0.0f), ImVec2(1.0f, 1.0f), IM_COL32(255, 255, 255, 255));
 		}
 	}
 
@@ -2563,8 +2565,8 @@ void Achievements::DrawLeaderboardsWindow()
 				GSTexture* badge = ImGuiFullscreen::GetCachedTextureAsync(s_game_icon.c_str());
 				if (badge)
 				{
-					ImGui::GetWindowDrawList()->AddImage(
-						badge->GetNativeHandle(), icon_min, icon_max, ImVec2(0.0f, 0.0f), ImVec2(1.0f, 1.0f), IM_COL32(255, 255, 255, 255));
+					ImGui::GetWindowDrawList()->AddImage(reinterpret_cast<ImTextureID>(badge->GetNativeHandle()),
+						icon_min, icon_max, ImVec2(0.0f, 0.0f), ImVec2(1.0f, 1.0f), IM_COL32(255, 255, 255, 255));
 				}
 			}
 
@@ -2856,8 +2858,8 @@ void Achievements::DrawLeaderboardEntry(const rc_client_leaderboard_entry_t& ent
 	}
 	if (icon_tex)
 	{
-		ImGui::GetWindowDrawList()->AddImage(
-			icon_tex->GetNativeHandle(), icon_bb.Min, icon_bb.Min + ImVec2(icon_size, icon_size));
+		ImGui::GetWindowDrawList()->AddImage(reinterpret_cast<ImTextureID>(icon_tex->GetNativeHandle()),
+			icon_bb.Min, icon_bb.Min + ImVec2(icon_size, icon_size));
 	}
 
 	const ImRect user_bb(ImVec2(text_start_x + column_spacing + icon_size, bb.Min.y), ImVec2(bb.Max.x, midpoint));
