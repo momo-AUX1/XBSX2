@@ -107,7 +107,7 @@
       <FloatingPointModel>Precise</FloatingPointModel>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalOptions>/Zc:__cplusplus /Zo /utf-8%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AdditionalOptions>/Zc:__cplusplus /Zo /utf-8%(AdditionalOptions) /bigobj /D SDL_BUILD</AdditionalOptions>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug Clang|ARM64'">Full</Optimization>
       <FavorSizeOrSpeed Condition="'$(Configuration)|$(Platform)'=='Debug Clang|ARM64'">Speed</FavorSizeOrSpeed>
     </ClCompile>

@@ -2039,7 +2039,6 @@ void Pcsx2Config::CopyRuntimeConfig(Pcsx2Config& cfg)
 	CurrentIRX = std::move(cfg.CurrentIRX);
 	CurrentGameArgs = std::move(cfg.CurrentGameArgs);
 	CurrentAspectRatio = cfg.CurrentAspectRatio;
-	IsPortableMode = cfg.IsPortableMode;
 
 	for (u32 i = 0; i < sizeof(Mcd) / sizeof(Mcd[0]); i++)
 	{
@@ -2125,15 +2124,8 @@ bool EmuFolders::SetResourcesDirectory()
 
 bool EmuFolders::ShouldUsePortableMode()
 {
-	// Check whether portable.ini/txt exists in the program directory or the `-portable` launch arguments have been passed.
-	if (FileSystem::FileExists(Path::Combine(AppRoot, "portable.ini").c_str()) ||
-		FileSystem::FileExists(Path::Combine(AppRoot, "portable.txt").c_str()) ||
-		EmuConfig.IsPortableMode)
-	{
-		return true;
-	}
-
-	return false;
+	// Check whether portable.ini exists in the program directory.
+	return FileSystem::FileExists(Path::Combine(AppRoot, "portable.ini").c_str()) || FileSystem::FileExists(Path::Combine(AppRoot, "portable.txt").c_str());
 }
 
 bool EmuFolders::SetDataDirectory(Error* error)
@@ -2186,23 +2178,7 @@ bool EmuFolders::SetDataDirectory(Error* error)
 
 	// couldn't determine the data directory, or using portable mode? fallback to portable.
 	if (DataRoot.empty())
-	{
-/* This breaks bulding on UWP so we have to comment this out
-#if defined(__linux__)
-	// special check if we're on appimage
-	// always make sure that DataRoot
-	// is adjacent next to the appimage
-	if (getenv("APPIMAGE"))
-	{
-		std::string_view appimage_path = Path::GetDirectory(getenv("APPIMAGE"));
-		DataRoot = Path::RealPath(Path::Combine(appimage_path, "PCSX2"));
-	}
-	else
-		DataRoot = Path::Combine(AppRoot, GetPortableModePath());
-#else
-		DataRoot = Path::Combine(AppRoot, GetPortableModePath());
-#endif
-	} */
+		DataRoot = AppRoot;
 
 	// inis is always below the data root
 	Settings = Path::Combine(DataRoot, "inis");
