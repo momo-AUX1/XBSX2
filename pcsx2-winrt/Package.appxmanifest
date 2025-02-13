@@ -30,14 +30,13 @@
       </Extensions>
     </Application>
   </Applications>
-  <Capabilities>
-	<rescap:Capability Name="runFullTrust"/>
-	<rescap:Capability Name="broadFileSystemAccess" />
-	<rescap:Capability Name="expandedResources" />
-    <uap:Capability Name="removableStorage"/>
-	<Capability Name="internetClient" />
-	<Capability Name="codeGeneration"/>
-    <Capability Name="internetClientServer"/>
-	<Capability Name="hevcPlayback"/>
-  </Capabilities>
+	<Capabilities>
+		<rescap:Capability Name="runFullTrust"/>
+		<rescap:Capability Name="broadFileSystemAccess" />
+		<rescap:Capability Name="expandedResources" />
+		<uap:Capability Name="removableStorage"/>
+		<Capability Name="internetClient" />
+		<Capability Name="codeGeneration"/>
+		<Capability Name="internetClientServer"/>
+	</Capabilities>
 </Package>
