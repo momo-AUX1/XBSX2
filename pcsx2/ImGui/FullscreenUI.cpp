@@ -6807,7 +6807,7 @@ void FullscreenUI::DrawAboutWindow()
 		BeginMenuButtons();
 
 		if (ActiveButton(ICON_FA_PERSON_BOOTH "Discord", false))
-			ExitFullscreenAndOpenURL(EMULATIONCOLLECTIVE_DISCORD_URL);
+			ExitFullscreenAndOpenURL(XBOXEMULATIONHUB_DISCORD_URL);
 
 		if (ActiveButton(ICON_FA_BUG " XBSX2 GitHub Repository", false))
 			ExitFullscreenAndOpenURL(XBSX2_GITHUB_URL);

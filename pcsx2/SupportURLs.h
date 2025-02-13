@@ -11,4 +11,4 @@
 #define PCSX2_DOCUMENTATION_URL "https://pcsx2.net/docs"
 #define PCSX2_WIKI_URL "https://wiki.pcsx2.net/Main_Page"
 #define PCSX2_DISCORD_URL "https://pcsx2.net/discord"
-#define EMULATIONCOLLECTIVE_DISCORD_URL "https://discord.gg/emulation-collective-1007582798598647889"
+#define XBOXEMULATIONHUB_DISCORD_URL "https://discord.gg/WCmxvvxHqu"

@@ -34,9 +34,10 @@
 	<rescap:Capability Name="runFullTrust"/>
 	<rescap:Capability Name="broadFileSystemAccess" />
 	<rescap:Capability Name="expandedResources" />
-    <Capability Name="internetClient" />
-    <Capability Name="codeGeneration"/>
     <uap:Capability Name="removableStorage"/>
-	<Capability Name="internetClientServer"/>
+	<Capability Name="internetClient" />
+	<Capability Name="codeGeneration"/>
+    <Capability Name="internetClientServer"/>
+	<Capability Name="hevcPlayback"/>
   </Capabilities>
 </Package>
