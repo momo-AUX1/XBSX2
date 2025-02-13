@@ -220,15 +220,6 @@
     <Filter Include="System\Ps2\GS\Shaders\Direct3D">
       <UniqueIdentifier>{eb697f5b-85f5-424a-a7e4-8d8b73d3426e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Tools">
-      <UniqueIdentifier>{9153e32b-e1e3-49ac-b490-b56adfd1692f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Tools\Input Recording">
-      <UniqueIdentifier>{03ba2aa7-2cd9-48cb-93c6-fc93d5bdc938}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Tools\Input Recording\Utilities">
-      <UniqueIdentifier>{78c9db9c-9c7c-4385-90e7-9fa71b922f60}</UniqueIdentifier>
-    </Filter>
     <Filter Include="System\Ps2\USB\qemu-usb">
       <UniqueIdentifier>{e068b724-9319-42e5-9ea7-63d80989ea1d}</UniqueIdentifier>
     </Filter>
@@ -283,11 +274,20 @@
     <Filter Include="System\Ps2\EmotionEngine\DMAC\Vif\Unpack\newVif\Dynarec\arm64">
       <UniqueIdentifier>{8aea3ae6-9722-463a-94ac-34f3738a3153}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Tools\arm64">
-      <UniqueIdentifier>{cf847f4e-744e-4c27-a7ac-8564726fb4e6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="System\Ps2\EmotionEngine\EE\Dynarec\arm64">
       <UniqueIdentifier>{cd8ec519-2196-43f7-86de-7faced2d4296}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools">
+      <UniqueIdentifier>{9153e32b-e1e3-49ac-b490-b56adfd1692f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools\Input Recording">
+      <UniqueIdentifier>{03ba2aa7-2cd9-48cb-93c6-fc93d5bdc938}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools\Input Recording\Utilities">
+      <UniqueIdentifier>{78c9db9c-9c7c-4385-90e7-9fa71b922f60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools\arm64">
+      <UniqueIdentifier>{cf847f4e-744e-4c27-a7ac-8564726fb4e6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
