@@ -3,6 +3,7 @@
 #include <windows.h>
 #include <winrt/Windows.Foundation.h>
 #include <winrt/Windows.Foundation.Collections.h>
+#include <winrt/Windows.Globalization.h>
 #include <winrt/Windows.ApplicationModel.Activation.h>
 #include <winrt/Windows.ApplicationModel.Core.h>
 #include <winrt/Windows.UI.Core.h>
@@ -22,6 +23,7 @@
 #include <mutex>
 #include <thread>
 #include <sstream>
+#include <string>
 
 #include "fmt/core.h"
 
@@ -342,6 +344,21 @@ void Host::OnCaptureStopped()
 void Host::RequestExitApplication(bool allow_confirm)
 {
 	s_running = false;
+}
+
+bool Host::LocaleCircleConfirm()
+{
+	using namespace winrt::Windows::Globalization;
+
+	// Get the current input method language tag
+	std::wstring currentLanguage = Language::CurrentInputMethodLanguageTag().c_str();
+
+	// Check if the current language is Japanese, Chinese, or Korean
+	bool isTargetLanguage = currentLanguage.rfind(L"ja", 0) == 0 ||
+							currentLanguage.rfind(L"zh", 0) == 0 ||
+							currentLanguage.rfind(L"ko", 0) == 0;
+
+	return isTargetLanguage;
 }
 
 void Host::RequestExitBigPicture(void)
