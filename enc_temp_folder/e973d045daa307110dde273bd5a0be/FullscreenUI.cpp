@@ -3431,11 +3431,8 @@ void FullscreenUI::DrawEmulationSettingsPage()
 			"EmuCore/Speedhacks", "fastCDVD", false);
 	}
 
-	// This setting seems to cause issues with the 5 gigabyte UWP RAM limit so I am removing it from settings.
-	#ifndef WINRT_XBOX
 	DrawToggleSetting(bsi, FSUI_CSTR("Enable CDVD Precaching"), FSUI_CSTR("Loads the disc image into RAM before starting the virtual machine."),
 		"EmuCore", "CdvdPrecache", false);
-	#endif
 
 	MenuHeading(FSUI_CSTR("Frame Pacing/Latency Control"));
 
