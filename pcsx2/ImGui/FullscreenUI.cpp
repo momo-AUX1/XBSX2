@@ -513,16 +513,20 @@ void FullscreenUI::GetStandardSelectionFooterText(SmallStringBase& dest, bool ba
 		const bool circleOK = ImGui::GetIO().ConfigNavSwapGamepadButtons;
 		ImGuiFullscreen::CreateFooterTextString(
 			dest,
-			std::array{std::make_pair(ICON_PF_DPAD_UP_DOWN, FSUI_VSTR("Change Selection")),
+			std::array{
+				std::make_pair(ICON_PF_DPAD_UP_DOWN, FSUI_VSTR("Change Selection")),
 				std::make_pair(circleOK ? ICON_PF_BUTTON_CIRCLE : ICON_PF_BUTTON_CROSS, FSUI_VSTR("Select")),
-				std::make_pair(circleOK ? ICON_PF_BUTTON_CROSS : ICON_PF_BUTTON_CIRCLE, back_instead_of_cancel ? FSUI_VSTR("Back") : FSUI_VSTR("Cancel"))});
+				std::make_pair(circleOK ? ICON_PF_BUTTON_CROSS : ICON_PF_BUTTON_CIRCLE, back_instead_of_cancel ? FSUI_VSTR("Back") : FSUI_VSTR("Cancel")),
+			});
 	}
 	else
 	{
 		ImGuiFullscreen::CreateFooterTextString(
-			dest, std::array{std::make_pair(ICON_PF_ARROW_UP ICON_PF_ARROW_DOWN, FSUI_VSTR("Change Selection")),
+			dest, std::array{
+					  std::make_pair(ICON_PF_ARROW_UP ICON_PF_ARROW_DOWN, FSUI_VSTR("Change Selection")),
 					  std::make_pair(ICON_PF_ENTER, FSUI_VSTR("Select")),
-					  std::make_pair(ICON_PF_ESC, back_instead_of_cancel ? FSUI_VSTR("Back") : FSUI_VSTR("Cancel"))});
+					  std::make_pair(ICON_PF_ESC, back_instead_of_cancel ? FSUI_VSTR("Back") : FSUI_VSTR("Cancel")),
+				  });
 	}
 }
 
@@ -544,18 +548,23 @@ void ImGuiFullscreen::GetFileSelectorHelpText(SmallStringBase& dest)
 	{
 		const bool circleOK = ImGui::GetIO().ConfigNavSwapGamepadButtons;
 		ImGuiFullscreen::CreateFooterTextString(
-			dest, std::array{std::make_pair(ICON_PF_DPAD_UP_DOWN, FSUI_VSTR("Change Selection")),
+			dest, std::array{
+					  std::make_pair(ICON_PF_DPAD_UP_DOWN, FSUI_VSTR("Change Selection")),
 					  std::make_pair(ICON_PF_BUTTON_TRIANGLE, FSUI_VSTR("Parent Directory")),
 					  std::make_pair(circleOK ? ICON_PF_BUTTON_CIRCLE : ICON_PF_BUTTON_CROSS, FSUI_VSTR("Select")),
-					  std::make_pair(circleOK ? ICON_PF_BUTTON_CROSS : ICON_PF_BUTTON_CIRCLE, FSUI_VSTR("Cancel"))});
+					  std::make_pair(circleOK ? ICON_PF_BUTTON_CROSS : ICON_PF_BUTTON_CIRCLE, FSUI_VSTR("Cancel")),
+				  });
 	}
 	else
 	{
 		ImGuiFullscreen::CreateFooterTextString(
 			dest,
-			std::array{std::make_pair(ICON_PF_ARROW_UP ICON_PF_ARROW_DOWN, FSUI_VSTR("Change Selection")),
+			std::array{
+				std::make_pair(ICON_PF_ARROW_UP ICON_PF_ARROW_DOWN, FSUI_VSTR("Change Selection")),
 				std::make_pair(ICON_PF_BACKSPACE, FSUI_VSTR("Parent Directory")),
-				std::make_pair(ICON_PF_ENTER, FSUI_VSTR("Select")), std::make_pair(ICON_PF_ESC, FSUI_VSTR("Cancel"))});
+				std::make_pair(ICON_PF_ENTER, FSUI_VSTR("Select")),
+				std::make_pair(ICON_PF_ESC, FSUI_VSTR("Cancel")),
+			});
 	}
 }
 
@@ -564,15 +573,19 @@ void ImGuiFullscreen::GetInputDialogHelpText(SmallStringBase& dest)
 	if (IsGamepadInputSource())
 	{
 		const bool circleOK = ImGui::GetIO().ConfigNavSwapGamepadButtons;
-		CreateFooterTextString(dest, std::array{std::make_pair(ICON_PF_KEYBOARD, FSUI_VSTR("Enter Value")),
+		CreateFooterTextString(dest, std::array{
+										 std::make_pair(ICON_PF_KEYBOARD, FSUI_VSTR("Enter Value")),
 										 std::make_pair(circleOK ? ICON_PF_BUTTON_CIRCLE : ICON_PF_BUTTON_CROSS, FSUI_VSTR("Select")),
-										 std::make_pair(circleOK ? ICON_PF_BUTTON_CROSS : ICON_PF_BUTTON_CIRCLE, FSUI_VSTR("Cancel"))});
+										 std::make_pair(circleOK ? ICON_PF_BUTTON_CROSS : ICON_PF_BUTTON_CIRCLE, FSUI_VSTR("Cancel")),
+									 });
 	}
 	else
 	{
-		CreateFooterTextString(dest, std::array{std::make_pair(ICON_PF_KEYBOARD, FSUI_VSTR("Enter Value")),
+		CreateFooterTextString(dest, std::array{
+										 std::make_pair(ICON_PF_KEYBOARD, FSUI_VSTR("Enter Value")),
 										 std::make_pair(ICON_PF_ENTER, FSUI_VSTR("Select")),
-										 std::make_pair(ICON_PF_ESC, FSUI_VSTR("Cancel"))});
+										 std::make_pair(ICON_PF_ESC, FSUI_VSTR("Cancel")),
+									 });
 	}
 }
 
@@ -1013,7 +1026,7 @@ bool FullscreenUI::LoadResources()
 	s_fallback_exe_texture = LoadTexture("fullscreenui/applications-system.png");
 
 	for (u32 i = static_cast<u32>(GameDatabaseSchema::Compatibility::Nothing);
-		i <= static_cast<u32>(GameDatabaseSchema::Compatibility::Perfect); i++)
+		 i <= static_cast<u32>(GameDatabaseSchema::Compatibility::Perfect); i++)
 	{
 		s_game_compatibility_textures[i - 1] = LoadTexture(fmt::format("icons/star-{}.png", i - 1).c_str());
 	}
@@ -1402,7 +1415,8 @@ void FullscreenUI::DrawLandingWindow()
 			std::make_pair(ICON_PF_BUTTON_SQUARE, FSUI_VSTR("Toggle Fullscreen")),
 			#endif
 			std::make_pair(circleOK ? ICON_PF_BUTTON_CIRCLE : ICON_PF_BUTTON_CROSS, FSUI_VSTR("Select")),
-			std::make_pair(circleOK ? ICON_PF_BUTTON_CROSS : ICON_PF_BUTTON_CIRCLE, FSUI_VSTR("Exit"))});
+			std::make_pair(circleOK ? ICON_PF_BUTTON_CROSS : ICON_PF_BUTTON_CIRCLE, FSUI_VSTR("Exit")),
+		});
 	}
 	else
 	{
@@ -1414,7 +1428,8 @@ void FullscreenUI::DrawLandingWindow()
 			std::make_pair(ICON_PF_ARROW_LEFT ICON_PF_ARROW_RIGHT, FSUI_VSTR("Navigate")),
 			std::make_pair(ICON_PF_SPACE, FSUI_VSTR("Game List")),
 			std::make_pair(ICON_PF_ENTER, FSUI_VSTR("Select")),
-			std::make_pair(ICON_PF_ESC, FSUI_VSTR("Exit"))});
+			std::make_pair(ICON_PF_ESC, FSUI_VSTR("Exit")),
+		});
 	}
 }
 
@@ -1476,17 +1491,21 @@ void FullscreenUI::DrawStartGameWindow()
 	if (IsGamepadInputSource())
 	{
 		const bool circleOK = ImGui::GetIO().ConfigNavSwapGamepadButtons;
-		SetFullscreenFooterText(std::array{std::make_pair(ICON_PF_DPAD_LEFT_RIGHT, FSUI_VSTR("Navigate")),
+		SetFullscreenFooterText(std::array{
+			std::make_pair(ICON_PF_DPAD_LEFT_RIGHT, FSUI_VSTR("Navigate")),
 			std::make_pair(ICON_PF_BUTTON_SQUARE, FSUI_VSTR("Load Global State")),
 			std::make_pair(circleOK ? ICON_PF_BUTTON_CIRCLE : ICON_PF_BUTTON_CROSS, FSUI_VSTR("Select")),
-			std::make_pair(circleOK ? ICON_PF_BUTTON_CROSS : ICON_PF_BUTTON_CIRCLE, FSUI_VSTR("Back"))});
+			std::make_pair(circleOK ? ICON_PF_BUTTON_CROSS : ICON_PF_BUTTON_CIRCLE, FSUI_VSTR("Back")),
+		});
 	}
 	else
 	{
-		SetFullscreenFooterText(std::array{std::make_pair(ICON_PF_ARROW_LEFT ICON_PF_ARROW_RIGHT, FSUI_VSTR("Navigate")),
+		SetFullscreenFooterText(std::array{
+			std::make_pair(ICON_PF_ARROW_LEFT ICON_PF_ARROW_RIGHT, FSUI_VSTR("Navigate")),
 			std::make_pair(ICON_PF_F1, FSUI_VSTR("Load Global State")),
 			std::make_pair(ICON_PF_ENTER, FSUI_VSTR("Select")),
-			std::make_pair(ICON_PF_ESC, FSUI_VSTR("Back"))});
+			std::make_pair(ICON_PF_ESC, FSUI_VSTR("Back")),
+		});
 	}
 }
 
@@ -1533,14 +1552,16 @@ void FullscreenUI::DrawExitWindow()
 		SetFullscreenFooterText(std::array{
 			std::make_pair(ICON_PF_DPAD_LEFT_RIGHT, FSUI_VSTR("Navigate")),
 			std::make_pair(circleOK ? ICON_PF_BUTTON_CIRCLE : ICON_PF_BUTTON_CROSS, FSUI_VSTR("Select")),
-			std::make_pair(circleOK ? ICON_PF_BUTTON_CROSS : ICON_PF_BUTTON_CIRCLE, FSUI_VSTR("Back"))});
+			std::make_pair(circleOK ? ICON_PF_BUTTON_CROSS : ICON_PF_BUTTON_CIRCLE, FSUI_VSTR("Back")),
+		});
 	}
 	else
 	{
 		SetFullscreenFooterText(std::array{
 			std::make_pair(ICON_PF_ARROW_LEFT ICON_PF_ARROW_RIGHT, FSUI_VSTR("Navigate")),
 			std::make_pair(ICON_PF_ENTER, FSUI_VSTR("Select")),
-			std::make_pair(ICON_PF_ESC, FSUI_VSTR("Back"))});
+			std::make_pair(ICON_PF_ESC, FSUI_VSTR("Back")),
+		});
 	}
 }
 
@@ -3113,7 +3134,8 @@ void FullscreenUI::DrawSettingsWindow()
 			std::make_pair(ICON_PF_DPAD_LEFT_RIGHT, FSUI_VSTR("Change Page")),
 			std::make_pair(ICON_PF_DPAD_UP_DOWN, FSUI_VSTR("Navigate")),
 			std::make_pair(circleOK ? ICON_PF_BUTTON_CIRCLE : ICON_PF_BUTTON_CROSS, FSUI_VSTR("Select")),
-			std::make_pair(circleOK ? ICON_PF_BUTTON_CROSS : ICON_PF_BUTTON_CIRCLE, FSUI_VSTR("Back"))});
+			std::make_pair(circleOK ? ICON_PF_BUTTON_CROSS : ICON_PF_BUTTON_CIRCLE, FSUI_VSTR("Back")),
+		});
 	}
 	else
 	{
@@ -3121,7 +3143,8 @@ void FullscreenUI::DrawSettingsWindow()
 			std::make_pair(ICON_PF_ARROW_LEFT ICON_PF_ARROW_RIGHT, FSUI_VSTR("Change Page")),
 			std::make_pair(ICON_PF_ARROW_UP ICON_PF_ARROW_DOWN, FSUI_VSTR("Navigate")),
 			std::make_pair(ICON_PF_ENTER, FSUI_VSTR("Select")),
-			std::make_pair(ICON_PF_ESC, FSUI_VSTR("Back"))});
+			std::make_pair(ICON_PF_ESC, FSUI_VSTR("Back")),
+		});
 	}
 }
 
@@ -4160,7 +4183,8 @@ void FullscreenUI::DrawGraphicsSettingsPage(SettingsInterface* bsi, bool show_ad
 	static constexpr const char* s_gsdump_compression[] = {
 		FSUI_NSTR("Uncompressed"),
 		FSUI_NSTR("LZMA (xz)"),
-		FSUI_NSTR("Zstandard (zst)")};
+		FSUI_NSTR("Zstandard (zst)"),
+	};
 
 	if (show_advanced_settings)
 	{
@@ -5067,13 +5091,15 @@ void FullscreenUI::DrawAdvancedSettingsPage()
 		FSUI_NSTR("Uncompressed"),
 		FSUI_NSTR("Deflate64"),
 		FSUI_NSTR("Zstandard"),
-		FSUI_NSTR("LZMA2")};
+		FSUI_NSTR("LZMA2"),
+	};
 
 	static constexpr const char* s_savestate_compression_ratio[] = {
 		FSUI_NSTR("Low (Fast)"),
 		FSUI_NSTR("Medium (Recommended)"),
 		FSUI_NSTR("High"),
-		FSUI_NSTR("Very High (Slow, Not Recommended)")};
+		FSUI_NSTR("Very High (Slow, Not Recommended)"),
+	};
 
 	if (show_advanced_settings)
 	{
@@ -5550,15 +5576,19 @@ void FullscreenUI::DrawPauseMenu(MainWindowType type)
 	if (IsGamepadInputSource())
 	{
 		const bool circleOK = ImGui::GetIO().ConfigNavSwapGamepadButtons;
-		SetFullscreenFooterText(std::array{std::make_pair(ICON_PF_DPAD_UP_DOWN, FSUI_VSTR("Change Selection")),
+		SetFullscreenFooterText(std::array{
+			std::make_pair(ICON_PF_DPAD_UP_DOWN, FSUI_VSTR("Change Selection")),
 			std::make_pair(circleOK ? ICON_PF_BUTTON_CIRCLE : ICON_PF_BUTTON_CROSS, FSUI_VSTR("Select")),
-			std::make_pair(circleOK ? ICON_PF_BUTTON_CROSS : ICON_PF_BUTTON_CIRCLE, FSUI_VSTR("Return To Game"))});
+			std::make_pair(circleOK ? ICON_PF_BUTTON_CROSS : ICON_PF_BUTTON_CIRCLE, FSUI_VSTR("Return To Game")),
+		});
 	}
 	else
 	{
 		SetFullscreenFooterText(std::array{
 			std::make_pair(ICON_PF_ARROW_UP ICON_PF_ARROW_DOWN, FSUI_VSTR("Change Selection")),
-			std::make_pair(ICON_PF_ENTER, FSUI_VSTR("Select")), std::make_pair(ICON_PF_ESC, FSUI_VSTR("Return To Game"))});
+			std::make_pair(ICON_PF_ENTER, FSUI_VSTR("Select")),
+			std::make_pair(ICON_PF_ESC, FSUI_VSTR("Return To Game")),
+		});
 	}
 }
 
@@ -5988,14 +6018,17 @@ void FullscreenUI::DrawSaveStateSelector(bool is_loading)
 				std::make_pair(ICON_PF_DPAD, FSUI_VSTR("Select State")),
 				std::make_pair(ICON_PF_BUTTON_SQUARE, FSUI_VSTR("Options")),
 				std::make_pair(circleOK ? ICON_PF_BUTTON_CIRCLE : ICON_PF_BUTTON_CROSS, FSUI_VSTR("Load/Save State")),
-				std::make_pair(circleOK ? ICON_PF_BUTTON_CROSS : ICON_PF_BUTTON_CIRCLE, FSUI_VSTR("Cancel"))});
+				std::make_pair(circleOK ? ICON_PF_BUTTON_CROSS : ICON_PF_BUTTON_CIRCLE, FSUI_VSTR("Cancel")),
+			});
 		}
 		else
 		{
 			SetFullscreenFooterText(std::array{
 				std::make_pair(ICON_PF_ARROW_UP ICON_PF_ARROW_DOWN ICON_PF_ARROW_LEFT ICON_PF_ARROW_RIGHT, FSUI_VSTR("Select State")),
-				std::make_pair(ICON_PF_F1, FSUI_VSTR("Options")), std::make_pair(ICON_PF_ENTER, FSUI_VSTR("Load/Save State")),
-				std::make_pair(ICON_PF_ESC, FSUI_VSTR("Cancel"))});
+				std::make_pair(ICON_PF_F1, FSUI_VSTR("Options")),
+				std::make_pair(ICON_PF_ENTER, FSUI_VSTR("Load/Save State")),
+				std::make_pair(ICON_PF_ESC, FSUI_VSTR("Cancel")),
+			});
 		}
 	}
 }
@@ -6286,15 +6319,19 @@ void FullscreenUI::DrawGameListWindow()
 			std::make_pair(ICON_PF_BUTTON_TRIANGLE, FSUI_VSTR("Change View")),
 			std::make_pair(ICON_PF_BUTTON_SQUARE, FSUI_VSTR("Launch Options")),
 			std::make_pair(circleOK ? ICON_PF_BUTTON_CIRCLE : ICON_PF_BUTTON_CROSS, FSUI_VSTR("Start Game")),
-			std::make_pair(circleOK ? ICON_PF_BUTTON_CROSS : ICON_PF_BUTTON_CIRCLE, FSUI_VSTR("Back"))});
+			std::make_pair(circleOK ? ICON_PF_BUTTON_CROSS : ICON_PF_BUTTON_CIRCLE, FSUI_VSTR("Back")),
+		});
 	}
 	else
 	{
 		SetFullscreenFooterText(std::array{
 			std::make_pair(ICON_PF_ARROW_UP ICON_PF_ARROW_DOWN ICON_PF_ARROW_LEFT ICON_PF_ARROW_RIGHT, FSUI_VSTR("Select Game")),
-			std::make_pair(ICON_PF_F1, FSUI_VSTR("Change View")), std::make_pair(ICON_PF_F2, FSUI_VSTR("Settings")),
-			std::make_pair(ICON_PF_F3, FSUI_VSTR("Launch Options")), std::make_pair(ICON_PF_ENTER, FSUI_VSTR("Start Game")),
-			std::make_pair(ICON_PF_ESC, FSUI_VSTR("Back"))});
+			std::make_pair(ICON_PF_F1, FSUI_VSTR("Change View")),
+			std::make_pair(ICON_PF_F2, FSUI_VSTR("Settings")),
+			std::make_pair(ICON_PF_F3, FSUI_VSTR("Launch Options")),
+			std::make_pair(ICON_PF_ENTER, FSUI_VSTR("Start Game")),
+			std::make_pair(ICON_PF_ESC, FSUI_VSTR("Back")),
+		});
 	}
 }
 
