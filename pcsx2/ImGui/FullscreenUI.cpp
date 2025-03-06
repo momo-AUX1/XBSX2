@@ -4633,7 +4633,7 @@ void FullscreenUI::DrawControllerSettingsPage()
 	{
 		DoSaveInputProfile();
 	}
-
+#ifndef WINRT_XBOX
 	MenuHeading("Input Sources");
 	DrawToggleSetting(bsi, FSUI_ICONSTR(ICON_FA_COG, "Enable SDL Input Source"),
 		FSUI_CSTR("The SDL input source supports most controllers."), "InputSources", "SDL", true, true, false);
@@ -4647,9 +4647,10 @@ void FullscreenUI::DrawControllerSettingsPage()
 	DrawToggleSetting(bsi, FSUI_ICONSTR(ICON_FA_COG, "SDL Raw Input"), FSUI_CSTR("Allow SDL to use raw access to input devices."),
 		"InputSources", "SDLRawInput", false, bsi->GetBoolValue("InputSources", "SDL", true), false);
 	DrawToggleSetting(bsi, FSUI_ICONSTR(ICON_FA_COG, "Enable XInput Input Source"),
-		FSUI_CSTR("The XInput source provides support for XBox 360/XBox One/XBox Series controllers."), "InputSources", "XInput", false,
+		FSUI_CSTR("The XInput source provides support for Xbox 360/Xbox One/Xbox Series controllers."), "InputSources", "XInput", false,
 		true, false);
-#endif
+#endif // _WIN32
+#endif // WINRT_XBOX
 	MenuHeading(FSUI_CSTR("Multitap"));
 	DrawToggleSetting(bsi, FSUI_ICONSTR(ICON_FA_PLUS_SQUARE, "Enable Console Port 1 Multitap"),
 		FSUI_CSTR("Enables an additional three controller slots. Not supported in all games."), "Pad", "MultitapPort1", false, true, false);
