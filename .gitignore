@@ -107,7 +107,6 @@ oprofile_data/
 /bin/resources/fonts/NotoSansTC-Regular.ttf
 
 /deps-build
-/deps
 /deps-arm64
 /ipch
 

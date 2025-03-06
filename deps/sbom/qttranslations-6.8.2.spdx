@@ -1,0 +1,54 @@
+SPDXVersion: SPDX-2.3
+DataLicense: CC0-1.0
+SPDXID: SPDXRef-DOCUMENT
+DocumentName: qttranslations-6.8.2
+DocumentNamespace: https://qt.io/spdxdocs/qttranslations-2.3.198
+Creator: Organization: TheQtCompany
+Creator: Tool: Qt Build System
+CreatorComment: <text>This SPDX document was created from CMake 3.31.5, using the qt
+build system from https://code.qt.io/cgit/qt/qtbase.git/tree/cmake/QtPublicSbomHelpers.cmake</text>
+Created: 2025-03-02T23:52:45Z
+
+PackageName: MSVC
+SPDXID: SPDXRef-compiler
+PackageVersion: 19.43.34808.0
+PackageDownloadLocation: NOASSERTION
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
+PackageCopyrightText: NOASSERTION
+PackageSupplier: Organization: Anonymous
+FilesAnalyzed: false
+PackageSummary: <text>The compiler as identified by CMake, running on Windows (AMD64)</text>
+PrimaryPackagePurpose: APPLICATION
+Relationship: SPDXRef-compiler BUILD_DEPENDENCY_OF SPDXRef-Package-qttranslations
+RelationshipComment: <text>SPDXRef-Package-qttranslations is built by compiler MSVC version 19.43.34808.0</text>
+
+PackageName: qttranslations
+SPDXID: SPDXRef-Package-qttranslations
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:qt:qt:6.8.2:*:*:*:*:*:*:*
+ExternalRef: PACKAGE-MANAGER purl pkg:generic/TheQtCompany/qttranslations@2.3.198
+PackageVersion: 2.3.198
+PackageSupplier: Organization: TheQtCompany
+PackageDownloadLocation: git://code.qt.io/qt/qttranslations.git@ac1a6d3348fd4fd89525e7ef01e99a4e926e43fb
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
+PackageCopyrightText: Copyright (C) The Qt Company Ltd. and other contributors.
+PackageHomePage: https://qt.io
+PackageComment: <text>Built by CMake 3.31.5 with Release;Debug configuration for Windows (AMD64)
+qttranslations was configured with:
+    qt-configure-module <sources>/qttranslations -- -DCMAKE_SHARED_LINKER_FLAGS_RELEASE=/DEBUG
+</text>
+PackageVerificationCode: da39a3ee5e6b4b0d3255bfef95601890afd80709
+BuiltDate: 2025-03-02T23:52:45Z
+Relationship: SPDXRef-DOCUMENT DESCRIBES SPDXRef-Package-qttranslations
+
+LicenseID: LicenseRef-Qt-Commercial
+ExtractedText: <text>Licensees holding valid commercial Qt licenses may use this software in
+accordance with the the terms contained in a written agreement between
+you and The Qt Company. Alternatively, the terms and conditions that were
+accepted by the licensee when buying and/or downloading the
+software do apply.
+
+For the latest licensing terms and conditions, see https://www.qt.io/terms-conditions.
+For further information use the contact form at https://www.qt.io/contact-us.
+</text>

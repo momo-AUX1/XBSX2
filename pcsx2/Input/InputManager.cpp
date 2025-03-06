@@ -241,7 +241,7 @@ std::optional<InputBindingKey> InputManager::ParseInputBindingKey(const std::str
 	{
 		for (u32 i = FIRST_EXTERNAL_INPUT_SOURCE; i < LAST_EXTERNAL_INPUT_SOURCE; i++)
 		{
-			if (s_input_sources[i]->IsInitialized())
+			if (s_input_sources[i] && s_input_sources[i]->IsInitialized())
 			{
 				std::optional<InputBindingKey> key = s_input_sources[i]->ParseKeyString(source, sub_binding);
 				if (key.has_value())
@@ -261,7 +261,7 @@ bool InputManager::ParseBindingAndGetSource(const std::string_view binding, Inpu
 
 	for (u32 i = FIRST_EXTERNAL_INPUT_SOURCE; i < LAST_EXTERNAL_INPUT_SOURCE; i++)
 	{
-		if (s_input_sources[i]->IsInitialized())
+		if (s_input_sources[i] != nullptr && s_input_sources[i]->IsInitialized())
 		{
 			std::optional<InputBindingKey> parsed_key = s_input_sources[i]->ParseKeyString(source_string, sub_binding);
 			if (parsed_key.has_value())
@@ -1598,7 +1598,7 @@ bool InputManager::ReloadDevices()
 
 	for (u32 i = FIRST_EXTERNAL_INPUT_SOURCE; i < LAST_EXTERNAL_INPUT_SOURCE; i++)
 	{
-		if (s_input_sources[i]->IsInitialized())
+		if (s_input_sources[i] && s_input_sources[i]->IsInitialized())
 			changed |= s_input_sources[i]->ReloadDevices();
 	}
 
@@ -1621,7 +1621,7 @@ void InputManager::PollSources()
 {
 	for (u32 i = FIRST_EXTERNAL_INPUT_SOURCE; i < LAST_EXTERNAL_INPUT_SOURCE; i++)
 	{
-		if (s_input_sources[i]->IsInitialized())
+		if (s_input_sources[i] != nullptr && s_input_sources[i]->IsInitialized())
 			s_input_sources[i]->PollEvents();
 	}
 

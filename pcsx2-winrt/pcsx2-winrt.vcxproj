@@ -114,7 +114,7 @@
     <Link>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
       <AdditionalLibraryDirectories>$(SolutionDir)pcsx2\pcsx2core\$(Platform)\$(Configuration);$(SolutionDir)\uwp-deps\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>setupapi.lib;comctl32.lib;ws2_32.lib;shlwapi.lib;winmm.lib;rpcrt4.lib;xinputuap.lib;libfreetype.dll.a;libjpeg.dll.a;libpng16.dll.a;libwebp.dll.a;liblz4.dll.a;libSDL2.dll.a;libz.dll.a;libzstd.dll.a;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>setupapi.lib;comctl32.lib;ws2_32.lib;shlwapi.lib;winmm.lib;rpcrt4.lib;xinputuap.lib;libfreetype.dll.a;libjpeg.dll.a;libpng16.dll.a;libwebp.dll.a;liblz4.dll.a;libz.dll.a;libzstd.dll.a;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
