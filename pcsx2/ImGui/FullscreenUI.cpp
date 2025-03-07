@@ -3373,7 +3373,7 @@ void FullscreenUI::DrawInterfaceSettingsPage()
 			CloseChoiceDialog();
 		});
 	}
-	#ifndef WINRT_XBOX
+	#ifndef WINRT_XBOX // We can possibly get this working with a Discord RPC Server but it's not a priority right now.
 	MenuHeading(FSUI_CSTR("Integration"));
 	DrawToggleSetting(bsi, FSUI_ICONSTR(ICON_FA_USER_CIRCLE, "Enable Discord Presence"),
 		FSUI_CSTR("Shows the game you are currently playing as part of your profile on Discord."), "UI", "DiscordPresence", false);
@@ -7026,7 +7026,7 @@ void FullscreenUI::OpenAchievementsLoginWindow(Achievements::LoginRequestReason 
 	s_cheeve_login_reason = reason;
 }
 
-void FullscreenUI::DrawAchievementsLoginWindow()
+void FullscreenUI::DrawAchievementsLoginWindow() // Thank you to @worleydl for the logic to the Achievements Login code.
 {
 	ImGui::SetNextWindowSize(LayoutScale(1000.0f, 535.0f));
 	ImGui::SetNextWindowPos(ImGui::GetIO().DisplaySize * 0.5f, ImGuiCond_Always, ImVec2(0.5f, 0.5f));
@@ -7036,7 +7036,6 @@ void FullscreenUI::DrawAchievementsLoginWindow()
 	ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, LayoutScale(10.0f));
 	ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, LayoutScale(20.0f, 20.0f));
 
-	// Thank you to @worleydl for the logic to the Achievements Login code.
 	if (ImGui::BeginPopupModal("Achievements Login", &s_achievements_login_open, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize))
 	{
 		ImGui::TextWrapped("%s", FSUI_CSTR(
@@ -7659,7 +7658,7 @@ TRANSLATE_NOOP("FullscreenUI", "The SDL input source supports most controllers."
 TRANSLATE_NOOP("FullscreenUI", "Provides vibration and LED control support over Bluetooth.");
 TRANSLATE_NOOP("FullscreenUI", "Enable/Disable the Player LED on DualSense controllers.");
 TRANSLATE_NOOP("FullscreenUI", "Allow SDL to use raw access to input devices.");
-TRANSLATE_NOOP("FullscreenUI", "The XInput source provides support for XBox 360/XBox One/XBox Series controllers.");
+TRANSLATE_NOOP("FullscreenUI", "The XInput source provides support for Xbox 360/Xbox One/Xbox Series controllers.");
 TRANSLATE_NOOP("FullscreenUI", "Multitap");
 TRANSLATE_NOOP("FullscreenUI", "Enables an additional three controller slots. Not supported in all games.");
 TRANSLATE_NOOP("FullscreenUI", "Attempts to map the selected port to a chosen controller.");
