@@ -26,7 +26,7 @@
 #include <sstream>
 #include <limits>
 
-#ifndef WINRT_XBOX
+#ifdef WINRT_XBOX
 #ifdef ENABLE_OGL_DEBUG
 #define USE_PIX
 #include "WinPixEventRuntime/pix3.h"
@@ -1154,7 +1154,7 @@ void GSDevice12::EndPresent()
 	InvalidateCachedState();
 }
 
-#ifndef WINRT_XBOX
+#ifdef WINRT_XBOX
 #ifdef ENABLE_OGL_DEBUG
 static UINT Palette(float phase, const std::array<float, 3>& a, const std::array<float, 3>& b,
 	const std::array<float, 3>& c, const std::array<float, 3>& d)
@@ -1172,7 +1172,7 @@ static UINT Palette(float phase, const std::array<float, 3>& a, const std::array
 
 void GSDevice12::PushDebugGroup(const char* fmt, ...)
 {
-#ifndef WINRT_XBOX
+#ifdef WINRT_XBOX
 #ifdef ENABLE_OGL_DEBUG
 	if (!GSConfig.UseDebugDevice)
 		return;
@@ -1192,7 +1192,7 @@ void GSDevice12::PushDebugGroup(const char* fmt, ...)
 
 void GSDevice12::PopDebugGroup()
 {
-#ifndef WINRT_XBOX
+#ifdef WINRT_XBOX
 #ifdef ENABLE_OGL_DEBUG
 	if (!GSConfig.UseDebugDevice)
 		return;
