@@ -87,7 +87,7 @@ static RenderAPI GetAPIForRenderer(GSRendererType renderer)
 {
 	switch (renderer)
 	{
-#ifndef WINRT_XBOX
+#ifdef WINRT_XBOX
 		case GSRendererType::OGL:
 			return RenderAPI::OpenGL;
 
