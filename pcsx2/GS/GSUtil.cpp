@@ -212,7 +212,7 @@ GSRendererType GSUtil::GetPreferredRenderer()
 		preferred_renderer = GSRendererType::DX12;
 	// Mac: Prefer Metal hardware.
 	return GSRendererType::Metal;
-#elif defined(WINRT_XBOX) // OpenGL let's see if mesa works or explodes
+#elif defined(WINRT_XBOX) // OpenGL let's see if mesa works or explode
 	return GSRendererType::OGL;
 #elif defined(_WIN32)
 		// Use D3D device info to select renderer.
