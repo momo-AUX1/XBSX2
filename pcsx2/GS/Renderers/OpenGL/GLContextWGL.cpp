@@ -7,6 +7,7 @@
 #include "common/Console.h"
 #include "common/Error.h"
 #include "common/ScopedGuard.h"
+#include <windows.h>
 
 #ifdef __clang__
 #pragma clang diagnostic ignored "-Wmicrosoft-cast"
@@ -54,8 +55,12 @@ std::unique_ptr<GLContext> GLContextWGL::Create(const WindowInfo& wi, std::span<
 {
 	std::unique_ptr<GLContextWGL> context = std::make_unique<GLContextWGL>(wi);
 	if (!context->Initialize(versions_to_try, error))
+	{
+		OutputDebugStringA("GLContextWGL::Create - Initialize failed.\n");
 		return nullptr;
+	}
 
+	OutputDebugStringA("GLContextWGL::Create - Initialize succeeded.\n");
 	return context;
 }
 
